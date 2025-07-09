@@ -1,4 +1,7 @@
 <?php
+include('functions.php');
+secure();
+
 if (isset($_POST['AddSchool'])) {
   $BoardName = $_POST['BoardName'];
   $SchoolName = $_POST['SchoolName'];
@@ -7,9 +10,9 @@ if (isset($_POST['AddSchool'])) {
   // echo "School Name: " . htmlspecialchars($SchoolName) . "<br>";
   require('connect.php');
   $sql = "INSERT INTO schools (`Board Name`, `School Name`) VALUES ('$BoardName', '$SchoolName')";
-  
+
   $result = mysqli_query($connect, $sql);
-  if($result){
+  if ($result) {
     header("Location: index.php");
   }
 }
